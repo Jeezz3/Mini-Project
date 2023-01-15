@@ -1,11 +1,3 @@
-/////////////////////////////////
-//Class: CSE 101
-//#Assignment: pa6
-//Name: Pakyuen Choi
-//Cruzid: pchoi5
-//Id no.: 1825110
-/////////////////////////////////
-
 #include<iostream>
 #include<string>
 #include<fstream>
