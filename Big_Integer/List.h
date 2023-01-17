@@ -166,33 +166,20 @@ public:
    // Other Functions ---------------------------------------------------------
 
    // findNext()
-   // param: ListElement-
-   // return: Int-
-   // Starting from the current cursor position, performs a linear search (in 
-   // the direction front-to-back) for the first occurrence of element x. If x
-   // is found, places the cursor immediately after the found element, then 
-   // returns the final cursor position. If x is not found, places the cursor 
-   // at position length(), and returns -1. 
+   // param: ListElement- target element
+   // return: Int- find the first occurrence (front to back) of element x relative to cursor position, return -1 if not found
+
    int findNext(ListElement x);
 
    // findPrev()
-   // param: ListElement-
-   // return: Int- 
-   // Starting from the current cursor position, performs a linear search (in 
-   // the direction back-to-front) for the first occurrence of element x. If x
-   // is found, places the cursor immediately before the found element, then
-   // returns the final cursor position. If x is not found, places the cursor 
-   // at position 0, and returns -1. 
+   // param: ListElement- target element
+   // return: Int- find the first occurrence (back to front) of element x relative to cursor position, return -1 if not found
    int findPrev(ListElement x);
 
    // cleanup()
    // param: None
    // return: None
-   // Removes any repeated elements in this List, leaving only unique elements.
-   // The order of the remaining elements is obtained by retaining the frontmost 
-   // occurrance of each element, and removing all other occurances. The cursor 
-   // is not moved with respect to the retained elements, i.e. it lies between 
-   // the same two retained elements that it did before cleanup() was called.
+   // func: remove reapeated element, while retaining frontmost occurrance of each element 
    void cleanup();
  
    // concat()

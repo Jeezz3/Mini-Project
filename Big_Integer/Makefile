@@ -31,26 +31,8 @@ MEMCHECK       = valgrind --leak-check=full
 $(MAIN): $(OBJECT) $(ADT1_OBJECT) $(ADT2_OBJECT)
 	$(LINK) $(MAIN) $(OBJECT) $(ADT1_OBJECT) $(ADT2_OBJECT)
 
-BigIntegerTest : BigIntegerTest.o $(ADT1_OBJECT) $(ADT2_OBJECT)
-	$(LINK) BigIntegerTest BigIntegerTest.o $(ADT1_OBJECT) $(ADT2_OBJECT)
-
-$(ADT1_TEST): $(ADT1_TEST).o $(ADT1_OBJECT) $(ADT2_OBJECT)
-	$(LINK) $(ADT1_TEST) $(ADT1_TEST).o $(ADT1_OBJECT) $(ADT2_OBJECT)
-
-$(ADT2_TEST): $(ADT2_TEST).o $(ADT2_OBJECT)
-	$(LINK) $(ADT2_TEST) $(ADT2_TEST).o $(ADT2_OBJECT)
-
 $(OBJECT): $(SOURCE) $(ADT1_HEADER) $(ADT2_HEADER)
 	$(COMPILE) $(SOURCE)
-
-BigIntegerTest.o: BigIntegerTest.cpp $(ADT1_HEADER) $(ADT2_HEADER)
-	$(COMPILE) BigIntegerTest.cpp
-
-$(ADT1_TEST).o: $(ADT1_TEST).cpp $(ADT1_HEADER) $(ADT2_HEADER)
-	$(COMPILE) $(ADT1_TEST).cpp
-
-$(ADT2_TEST).o: $(ADT2_TEST).cpp $(ADT2_HEADER)
-	$(COMPILE) $(ADT2_TEST).cpp
 
 $(ADT1_OBJECT): $(ADT1_SOURCE) $(ADT1_HEADER)
 	$(COMPILE) $(ADT1_SOURCE)
@@ -59,14 +41,5 @@ $(ADT2_OBJECT): $(ADT2_SOURCE) $(ADT2_HEADER)
 	$(COMPILE) $(ADT2_SOURCE)
 
 clean:
-	$(REMOVE) $(MAIN) $(ADT1_TEST) $(ADT2_TEST)  BigIntegerTest
-	$(REMOVE) $(OBJECT) $(ADT1_TEST).o $(ADT2_TEST).o $(ADT1_OBJECT) $(ADT2_OBJECT) BigIntegerTest.o
-
-$(MAIN)Check: $(MAIN)
-	$(MEMCHECK) ./$(MAIN) in4 junk4
-
-$(ADT1)Check: BigIntegerTest
-	$(MEMCHECK) ./BigIntegerTest
-
-$(ADT2)Check: $(ADT2_TEST)
-	$(MEMCHECK) ./$(ADT2_TEST)
+	$(REMOVE) $(MAIN) $(ADT1_TEST) $(ADT2_TEST)
+	$(REMOVE) $(OBJECT) $(ADT1_TEST).o $(ADT2_TEST).o $(ADT1_OBJECT) $(ADT2_OBJECT)
